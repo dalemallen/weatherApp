@@ -32,23 +32,30 @@ class App extends Component  {
 
       
     }
+    const dt = new Date().toTimeString().split(" ", 2)
+    const time = dt[0]
+    console.log(time)
+
 
     
     //const current = `http://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&appid=${API_KEY}&units=metric`;
     //const forecast = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`)
 
-    Promise.all([fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`).then((response) => response.json()).then(response => 
-                 this.setState({todaysWeather: response})).then(response => console.log(this.state)),
-                 fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&appid=${API_KEY}&units=metric`).then((response) => response.json()).then(response => {
-                  try {
-                    const dailyWeather = response.list.filter(reading => reading.dt_txt.includes("18:00:00"))
-                    this.setState({weatherlist: dailyWeather})
-                  }
-                  catch(error) {
-                    return this.setState({ hasError: true, isLoading: false});
-                  }
-                })])
+    Promise.all([fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`)
+    .then((response) => response.json())
+    .then(response => {     
+        this.setState({todaysWeather: response})
+    }),
+    fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&appid=${API_KEY}&units=metric`)
+    .then((response) => response.json())
+    .then(response => {  
+      const dailyWeather = response.list.filter(reading =>  reading.dt_txt.includes("18:00:00"))        
+      console.log(dailyWeather)       
+      this.setState({weatherlist: dailyWeather})
+    })
     
+  ])
+
     this.setState({isLoading: false})
     
   }
@@ -56,9 +63,13 @@ class App extends Component  {
   render() {
     return (
       <div className="container-fluid">
-          <Search getWeather={this.getWeather} />      
-          {this.state.isLoading? <h1>Loading</h1> : <h1></h1>}
-          {this.state.hasError? <h1>Something went wrong.</h1>: <h1></h1>}
+          <Search getWeather={this.getWeather} />    
+          <div className="jusfity-content-center">
+            {this.state.isLoading? <h1>Loading</h1> : <h1></h1>}
+            {this.state.hasError? <h1>Something went wrong.</h1>: <h1></h1>}
+          </div>  
+          <br/>
+          <br/>
           {this.state.weatherlist.length !== 0 && !this.state.hasError && <WeatherList todaysWeather={this.state.todaysWeather} weatherlist={this.state.weatherlist} />}
       </div>
     );

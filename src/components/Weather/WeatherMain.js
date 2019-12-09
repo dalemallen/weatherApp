@@ -7,7 +7,7 @@ const WeatherMain = (props) => {
 
     const today = props.today;
     return ( 
-        <div className="col-md-4 " id="main">
+        <div className="col-md-4" id="main">
 
             <h1>{today.name}, {today.sys.country}</h1>
             <br/>
@@ -26,11 +26,13 @@ const WeatherMain = (props) => {
 
             </div>
             <br/>
-            <div className="row">
+            <div className="row justify-content-center">
                 <div className="col-md-12">
                 <h2>Humidity {today.main.humidity}</h2>
                 </div>
+            </div> 
                 <br/>
+            <div className="row">
                 <div className="col-md-6">
                 <h2>{Math.round(today.main.temp_min)}°C Min</h2>
                 </div>

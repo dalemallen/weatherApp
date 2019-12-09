@@ -4,15 +4,18 @@
 
 i {
     font-size: 3rem;
+    color: rgba(255, 250, 0, 0.75);
 }
 #main i {
-    font-size: 7rem;
+    font-size: 5rem;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
+    color: rgba(255, 250, 0, 0.75);
+    
 }
 
- #weatherList{
-    height: 20vh!important;
+#main {
+    border-right: 2px solid grey;
 }
 
 #forecast{

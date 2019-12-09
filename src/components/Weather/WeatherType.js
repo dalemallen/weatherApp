@@ -9,7 +9,12 @@ const WeatherType = (type) => {
         let theType = "cloudy"
         return <i className={"wi wi-day-"+theType}></i>
 
-    }        
+    }else if(theType === "clear"){
+        // this.setstate({weatherType: "cloudy"})
+        let theType = "sunny"
+        return <i className={"wi wi-day-"+theType}></i>
+
+    }         
     console.log(theType)
     return <i className={"wi wi-day-"+theType}></i>
 }

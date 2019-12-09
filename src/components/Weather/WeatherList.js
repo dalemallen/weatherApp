@@ -7,9 +7,8 @@ import Error from '../Error'
 
 const WeatherList = (props) => {  
     return ( 
-        
-            <div className="container" id="weatherlist">
-                <div className="row">
+            <div className="container">
+                <div className="row" id="weatherlist">
                     <WeatherMain today={props.todaysWeather}/>
                     <div className="col-md-8" id="forecast">
                         <h1 id="forecastTitle">5Day Forecast</h1>

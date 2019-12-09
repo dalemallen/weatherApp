@@ -29,7 +29,8 @@ const Weather = (props) => {
                         <h2><Day dt={weather.dt_txt} /></h2>
                     </div>
                     <div className="col-md-6"> 
-                        <h2><span>{Math.round(weather.main.temp_min)}°C Min</span>  <span>{Math.round(weather.main.temp_max)}°C Max</span></h2>
+                    <h2>{Math.round(weather.main.temp)}°C</h2>
+                        {/* <h2><span>{Math.round(weather.main.temp_min)}°C Min</span>  <span>{Math.round(weather.main.temp_max)}°C Max</span></h2> */}
                     </div>                      
                 </div>     
             </div>          
