@@ -1,27 +1,44 @@
-import React, { Component } from 'react'
+import React, {Component } from 'react'
 import './Weather.css'
+import WeatherType from './WeatherType'
+import Error from '../Error'
 
-const WeatherMain = (props) => {
- 
-    const today = props.today;   
+const WeatherMain = (props) => {  
+
+    const today = props.today;
     return ( 
-        <div className="col-12 border border-primary">
-            <h1>Todays</h1>
-            <h1>{today.weather[0].main}</h1>
+        <div className="col-md-4 " id="main">
+
+            <h1>{today.name}, {today.sys.country}</h1>
             <br/>
-            {today.weather[0].description}
             <div className="row">
-                <div className="col-12">
-                    {Math.round(today.main.temp)}
+            <div className="col-md-6">
+            <WeatherType type={today.weather[0].main}/>
                 </div>
-                <div className="col-6">
-                    {Math.round(today.main.temp_min)} Min
+                <div className="row">
+                <div className="col-md-12">
+                    <h3>{Math.round(today.main.temp)}°C</h3>
                 </div>
-                <div className="col-6">
-                    {Math.round(today.main.temp_max)} Max
+                <div className="col-md-12">
+                    <h3>{today.weather[0].main}</h3>
+                </div>
+                </div>
+
+            </div>
+            <br/>
+            <div className="row">
+                <div className="col-md-12">
+                <h2>Humidity {today.main.humidity}</h2>
+                </div>
+                <br/>
+                <div className="col-md-6">
+                <h2>{Math.round(today.main.temp_min)}°C Min</h2>
+                </div>
+                <div className="col-md-6">
+                    <h2>{Math.round(today.main.temp_max)}°C Max</h2>
                 </div>
             </div>        
-            {today.main.humidity} 
+             
         </div>
     )
 }

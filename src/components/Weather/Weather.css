@@ -2,3 +2,29 @@
     margin: 5px;
 }
 
+i {
+    font-size: 3rem;
+}
+#main i {
+    font-size: 7rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+ #weatherList{
+    height: 20vh!important;
+}
+
+#forecast{
+    text-align: center;
+} 
+
+#forecastTitle{
+    margin-bottom: 2rem;
+}
+
+#weather{
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid grey;
+}
