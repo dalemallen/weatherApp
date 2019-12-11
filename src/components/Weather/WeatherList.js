@@ -6,10 +6,11 @@ import Error from '../Error'
 
 
 const WeatherList = (props) => {  
+    console.log(props)
     return ( 
             <div className="container">
                 <div className="row" id="weatherlist">
-                    <WeatherMain today={props.todaysWeather}/>
+                    {props.todaysWeather.message !== "city not found" && props.todaysWeather.length !== 0  && <WeatherMain today={props.todaysWeather}/>} 
                     <div className="col-md-8" id="forecast">
                         <h1 id="forecastTitle">5Day Forecast</h1>
                         {/* loop through and display weather list */}

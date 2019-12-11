@@ -45,6 +45,8 @@ class App extends Component  {
     .then((response) => response.json())
     .then(response => {     
         this.setState({todaysWeather: response})
+    }).catch(error => {
+      return  this.setState({ hasError: true, isLoading: false});
     }),
     fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&appid=${API_KEY}&units=metric`)
     .then((response) => response.json())
@@ -53,6 +55,9 @@ class App extends Component  {
       console.log(dailyWeather)       
       this.setState({weatherlist: dailyWeather})
     })
+    .catch(error => {
+      return  this.setState({ hasError: true, isLoading: false});
+   })
     
   ])
 
@@ -66,7 +71,7 @@ class App extends Component  {
           <Search getWeather={this.getWeather} />    
           <div className="jusfity-content-center">
             {this.state.isLoading? <h1>Loading</h1> : <h1></h1>}
-            {this.state.hasError? <h1>Something went wrong.</h1>: <h1></h1>}
+            {this.state.hasError? <h1>The weather is fickle and it seems so is the App.</h1>: <h1></h1>}
           </div>  
           <br/>
           <br/>

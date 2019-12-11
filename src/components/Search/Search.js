@@ -17,8 +17,8 @@ const Search = (props) => {
                     </div>
                     <div className="col-md-4">
                         <div className="row ">
-                            <label htmlFor="country" className="col-md-2 col-form-label">Country</label>
-                            <div className="col-md-10">
+                            <label htmlFor="country" className="col-md-3 col-form-label">Country</label>
+                            <div className="col-md-9">
                             <input className="form-control" type="text" id="country"/> 
                             </div>
                         </div>
